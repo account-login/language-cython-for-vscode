@@ -410,6 +410,9 @@
     as | async | continue | del | assert | break | cdef | cpdef | finally | for
     | from | elif | else | if | except | pass | raise
     | return | try | while | with | is | in | not | and | or
+    | gil | nogil | fused | include
+    | public | api | readonly | extern | inline | namespace | const | new | by
+    | DEF | IF | ELIF | ELSE
   )\b
 </string>
           </dict>
@@ -427,7 +430,7 @@
             <key>name</key>
             <string>storage.type.class.cython</string>
             <key>match</key>
-            <string>\b(?&lt;!\.)(class)\b</string>
+            <string>\b(?&lt;!\.)(class|struct|union|enum|cppclass|ctypedef)\b</string>
           </dict>
         </array>
       </dict>
@@ -2685,6 +2688,7 @@
     | max | memoryview | min | next | oct | open | ord | pow | print
     | quit | range | reload | repr | reversed | round
     | setattr | sorted | sum | vars | zip
+    | sizeof | typeid
   )\b
 </string>
           </dict>
@@ -2716,6 +2720,11 @@
         and is special enough to be highlighted differently from
         other built-ins)
     | super
+
+    | NULL | void | signed | unsigned | char | short | long | double
+    | size_t | ssize_t | uintptr_t
+    | int8_t | int16_t | int32_t | int64_t
+    | uint8_t | uint16_t | uint32_t | uint64_t
   )\b
 </string>
       </dict>

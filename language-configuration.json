@@ -26,5 +26,38 @@
         ["(", ")"],
         ["\"", "\""],
         ["'", "'"]
+    ],
+    // ref: https://github.com/trixnz/vscode-lua/blob/master/language-configuration.json
+    "indentationRules": {
+        "increaseIndentPattern": "^.*:\\s*$",
+        "decreaseIndentPattern": "^\\s*(else|finally|elif\\s+.+)\\s*:\\s*$"
+    },
+    "onEnterRules": [
+        // ref: https://github.com/microsoft/vscode/issues/11514
+        // break comment into 2 lines
+        {
+            "beforeText": "^\\s*#",
+            "afterText": ".+",
+            "action": {
+                "indent": "none",
+                "appendText": "# "
+            }
+        },
+        // exit scope
+        {
+            "beforeText": "^\\s+(break|continue|((return|raise)(\\s+.+)?))",
+            "afterText": "$",
+            "action": {
+                "indent": "outdent"
+            }
+        },
+        // no indent on empty line
+        {
+            "beforeText": "^\\s*$",
+            "afterText": "^$",
+            "action": {
+                "indent": "none"
+            }
+        }
     ]
 }
